@@ -32,15 +32,15 @@ void setup() {
 
 void loop() {
     // create CAN frame objects
-    struct can_frame rxFrame;
+    struct can_frame xFrame;
     // make one for receiving, another for transmitting
     struct can_frame txFrame;
     /* todo 2 */
 
     // check if a CAN frame is received
-    if (mcp2515.readMessage(&rxFrame) == MCP2515::ERROR_OK) {
+    if (mcp2515.readMessage(&xFrame) == MCP2515::ERROR_OK) {
         // check if the received frame is of ID 0x420 and first data byte is 0x69
-        if (frameName.can_id == 0x420 && frameName.data[0] == 0x69) {
+        if (xFrame.can_id == 0x420 && xFrame.data[0] == 0x69) {
             // turn on the LED to indicate activity
             /* todo 3 */
             digitalWrite(PIN_PB2, HIGH)
